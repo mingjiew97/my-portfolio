@@ -1,0 +1,85 @@
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.handle,
+.back-handle {
+  position: absolute;
+  display: inline-block;
+  z-index: 1000;
+}
+.handle[data-permalink="back"][data-position="none"] path {
+  display: none;
+}
+
+.handle[data-permalink="back"][data-position="top"] path,
+.handle[data-permalink="back"][data-position="right"] path,
+.handle[data-permalink="back"][data-position="bottom"] path,
+.handle[data-permalink="back"][data-position="left"] path,
+.back-handle[data-permalink="back"][data-position="top"] path,
+.back-handle[data-permalink="back"][data-position="right"] path,
+.back-handle[data-permalink="back"][data-position="bottom"] path,
+.back-handle[data-permalink="back"][data-position="left"] path {
+  fill: #ffffff;
+}
+.handle[data-position="top"],
+.back-handle[data-position="top"] {
+  left: 50%;
+  transform: translate(-50%, 0) scale(1);
+}
+.handle[data-position="top"] path,
+.back-handle[data-position="top"] path {
+  fill: #ffcb75;
+}
+.handle[data-position="right"],
+.back-handle[data-position="right"] {
+  top: 50%;
+  left: 100%;
+  transform: translate(-100%, -50%) scale(1) rotate(90deg);
+}
+.handle[data-position="right"] path,
+.back-handle[data-position="right"] path {
+  fill: #ff7586;
+}
+.handle[data-position="bottom"],
+.back-handle[data-position="bottom"] {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%) scale(1) rotate(180deg);
+}
+.handle[data-position="bottom"] path,
+.back-handle[data-position="bottom"] path {
+  fill: #c8ade1;
+}
+.handle[data-position="left"],
+.back-handle[data-position="left"] {
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%) scale(1) rotate(-90deg);
+}
+.handle[data-position="left"] path,
+.back-handle[data-position="left"] path {
+  fill: #a7dcf7;
+}
+.handle.out,
+.back-handle.out {
+  pointer-events: none;
+}
+.handle.out path,
+.back-handle.out path {
+  pointer-events: none;
+}
+.handle path,
+.back-handle path {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.page-transition {
+  position: absolute;
+}
+.page-transition svg {
+  overflow: visible;
+}
