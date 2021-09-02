@@ -1,72 +1,118 @@
 body {
-    background: #8294C9;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-section {
-    align-items: center;
-    height: 100%;
-    scroll-snap-align: start;
-    flex: 1 0 100%;
-    display: flex;
-    justify-content: center;
-    overflow: auto;
-    width: 100%;
-    position: relative;
+  background: #e0e5ec;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #about-my-work {
-    position: relative;
+  position: relative;
+}
+
+#about-my-work h1 {
+  text-align: center;
+  padding: 10px;
+  margin: 5vh 0 2vh 0;
+  border-radius: 25px;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
 }
 
 #about-my-work main {
-    -webkit-overflow-scrolling: touch;
-    background: #8294C9;
-    border-radius: 25px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-    display: flex;
-    overflow: auto;
-    overflow-y: hidden;
-    position: relative;
-    scroll-behavior: smooth;
-    -ms-scroll-snap-type: x mandatory;
-    scroll-snap-type: x mandatory;
-    height: 75vh;
-    width: 75vw;
+  -webkit-overflow-scrolling: touch;
+  background: transparent;
+  border-radius: 25px;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+  display: flex;
+  overflow: auto;
+  overflow-y: hidden;
+  position: relative;
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+  height: 75vh;
+  width: 75vw;
 }
 
-h1 {
-    position: absolute;
-    z-index: 2;
-    font-weight: bold;
-    top: 5%;
-    right: 50%;
+section {
+  align-items: center;
+  height: 100%;
+  scroll-snap-align: start;
+  flex: 1 0 100%;
+  display: flex;
+  overflow: auto;
+  width: 100%;
+  position: relative;
+  /* hide scroll bar */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* hide scroll bar for chrome and safari */
+section::-webkit-scrollbar {
+  display: none;
 }
 
-#cards {
-    display: flex;
-    flex-direction: column;
+.cards {
+  display: flex;
+  flex-direction: column;
 }
 
-#cards article {
-    background: #8294C9;
-    border-radius: 25px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    flex: 1 1;
-    padding: 20px;
-    margin: 0px 10% 5% 10%;
-    transition: all 0.2s ease-in;
+.cards article {
+  border-radius: 25px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  flex: 1 1;
+  padding: 20px;
+  margin: 0 10% 5% 10%;
+  transition: all 0.2s ease-in;
 }
 
-#cards article:first-child {
-    margin-top: 10%;
+.cards article:first-child {
+  margin-top: 10%;
+}
+.cards article:last-child {
+  margin-bottom: 10%;
 }
 
-#cards article:hover {
-    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+.cards article:hover {
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2vh 0 5vh 0;
+}
+
+.footer-pick {
+  background-color: #dbe0e6;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  font-size: 0;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer-pick:hover {
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+}
+
+.footer-pick.active {
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+  background: radial-gradient(circle at 50% 50%, grey, grey, transparent 40%);
 }
