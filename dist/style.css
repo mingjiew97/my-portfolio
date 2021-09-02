@@ -1,0 +1,672 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+body {
+  background: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section {
+  align-items: center;
+  height: 100%;
+  scroll-snap-align: start;
+  flex: 1 0 100%;
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  width: 100%;
+  position: relative;
+}
+#app {
+  position: relative;
+}
+#app > a {
+  --neumorphic-reach: 10;
+  --neumorphic-blur: 15;
+  --neumorphic-intensity: 0.75;
+  --default: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+  --dark: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 15) * 1%), var(--neumorphic-intensity));
+  --light: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 15) * 1%), var(--neumorphic-intensity));
+  --x: calc(var(--neumorphic-reach) * 1px);
+  --y: calc(var(--neumorphic-reach) * 1px);
+  --blur: calc(var(--neumorphic-blur) * 1px);
+  --x2: calc(var(--neumorphic-reach) * -1px);
+  --y2: calc(var(--neumorphic-reach) * -1px);
+  box-shadow: var(--x) var(--y) var(--blur) var(--dark),
+var(--x2) var(--y2) var(--blur) var(--light);
+  position: absolute;
+  top: 50%;
+  height: 44px;
+  width: 44px;
+  background: var(--default);
+  border-radius: 50%;
+  font-size: 0;
+}
+#app > a:visited path,
+#app > a path {
+  fill: var(--dark);
+}
+#app > a:hover path,
+#app > a:focus path {
+  fill: var(--light);
+}
+#app > a:active {
+  border: 4px solid #fff;
+}
+#app > a:active path {
+  fill: #fff;
+}
+#app > a:not([href]) {
+  border: 0;
+  cursor: not-allowed;
+}
+#app > a:not([href]) path {
+  fill: var(--dark);
+}
+#app > a:nth-of-type(1) {
+  left: 100%;
+  transform: translate(50%, -50%);
+}
+#app > a:nth-of-type(2) {
+  right: 100%;
+  transform: translate(-50%, -50%);
+}
+#app > a:nth-of-type(2) svg {
+  transform: rotate(180deg);
+}
+main {
+  --neumorphic-reach: 30;
+  --neumorphic-blur: 60;
+  --neumorphic-intensity: 0.25;
+  --border-width: 0;
+  --border-intensity: 0.1;
+  --border-radius: 25;
+  --x: calc(var(--neumorphic-reach) * 1px);
+  --y: calc(var(--neumorphic-reach) * 1px);
+  --blur: calc(var(--neumorphic-blur) * 1px);
+  --x2: calc(var(--neumorphic-reach) * -1px);
+  --y2: calc(var(--neumorphic-reach) * -1px);
+  -webkit-overflow-scrolling: touch;
+  background: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+  border: calc(var(--border-width, 0) * 1px) solid hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 15) * 1%), var(--border-intensity));
+  border-radius: calc(var(--border-radius) * 1px);
+  box-shadow: var(--x) var(--y) var(--blur) hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 15) * 1%), var(--neumorphic-intensity)),
+var(--x2) var(--y2) var(--blur) hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 15) * 1%), var(--neumorphic-intensity));
+  display: flex;
+  overflow: auto;
+  overflow-y: hidden;
+  position: relative;
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  height: 85vmin;
+  width: 85vmin;
+}
+footer {
+  position: absolute;
+  top: calc(100% + 60px);
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+}
+footer a.active {
+  background: radial-gradient(circle at 50% 50%, hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 30) * 1%)) 20%, transparent 25%);
+}
+footer a {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  font-size: 0;
+  display: block;
+  position: relative;
+  transition: background 0.1s ease;
+}
+footer a:hover:not(.active) {
+  background: radial-gradient(circle at 50% 50%, hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 10) * 1%)) 20%, transparent 25%);
+}
+footer a:after {
+  --neumorphic-reach: 4;
+  --neumorphic-blur: 8;
+  --neumorphic-intensity: 0.25;
+  --dark: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 15) * 1%), var(--neumorphic-intensity));
+  --light: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 15) * 1%), var(--neumorphic-intensity));
+  --x: calc(var(--neumorphic-reach) * 1px);
+  --y: calc(var(--neumorphic-reach) * 1px);
+  --blur: calc(var(--neumorphic-blur) * 1px);
+  --x2: calc(var(--neumorphic-reach) * -1px);
+  --y2: calc(var(--neumorphic-reach) * -1px);
+  content: '';
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: var(--x) var(--y) var(--blur) var(--dark) inset,
+var(--x2) var(--y2) var(--blur) var(--light) inset;
+}
+article {
+  --x: calc(var(--neumorphic-reach) * 1px);
+  --y: calc(var(--neumorphic-reach) * 1px);
+  --blur: calc(var(--neumorphic-blur) * 1px);
+  --x2: calc(var(--neumorphic-reach) * -1px);
+  --y2: calc(var(--neumorphic-reach) * -1px);
+  background: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+  border: calc(var(--border-width, 0) * 1px) solid hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 15) * 1%), var(--border-intensity));
+  border-radius: calc(var(--border-radius) * 1px);
+  box-shadow: var(--x) var(--y) var(--blur) hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 15) * 1%), var(--neumorphic-intensity)),
+var(--x2) var(--y2) var(--blur) hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 15) * 1%), var(--neumorphic-intensity));
+  height: calc(var(--height, 100) * 1px);
+  width: calc(var(--width, 100) * 1px);
+}
+header {
+  position: fixed;
+  height: 75vmin;
+  width: 100vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+h1 {
+  color: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 50) * 1%), 0.25);
+  position: absolute;
+  z-index: 2;
+  font-weight: bold;
+  bottom: 5%;
+  right: 5%;
+}
+label {
+  color: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 50) * 1%));
+}
+@supports (-webkit-appearance: none) {
+  input[type='checkbox'],
+  input[type='radio'] {
+    --default: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+    --light: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%), var(--neumorphic-intensity));
+    --dark: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), var(--neumorphic-intensity));
+    --x: calc(var(--neumorphic-reach) * 1px);
+    --y: calc(var(--neumorphic-reach) * 1px);
+    --blur: calc(var(--neumorphic-blur) * 1px);
+    --x2: calc(var(--neumorphic-reach) * -1px);
+    --y2: calc(var(--neumorphic-reach) * -1px);
+    --size: 36;
+    -webkit-appearance: none;
+    height: calc(var(--size) * 1px);
+    outline: none;
+    margin: 0;
+    box-shadow: var(--x) var(--y) var(--blur) var(--dark) inset,
+var(--x2) var(--y2) var(--blur) var(--light) inset;
+    cursor: pointer;
+    border-style: solid;
+    border-color: #fff;
+    border-radius: calc(var(--border-radius) * 1px);
+    border-width: calc(var(--border-width) * 1px);
+    background: var(--default);
+    transition: box-shadow 0.1s;
+    width: calc(var(--size) * 1px);
+  }
+  input[type='checkbox']:checked,
+  input[type='radio']:checked {
+    background: radial-gradient(circle at center center, white 25%, transparent 25%), var(--default);
+  }
+  input[type='checkbox']:checked + label,
+  input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  input[type=radio] {
+    box-shadow: var(--x) var(--y) var(--blur) var(--dark),
+var(--x2) var(--y2) var(--blur) var(--light);
+  }
+  input[type=radio]:hover {
+    --x: calc(var(--neumorphic-reach) * 2px);
+    --y: calc(var(--neumorphic-reach) * 2px);
+    --blur: calc(var(--neumorphic-blur) * 2px);
+    --x2: calc(var(--neumorphic-reach) * -2px);
+    --y2: calc(var(--neumorphic-reach) * -2px);
+  }
+  input[type=radio]:checked {
+    box-shadow: var(--x) var(--y) var(--blur) var(--dark) inset,
+var(--x2) var(--y2) var(--blur) var(--light) inset;
+  }
+  input[type=range] {
+    --thumb-size: 36;
+    --thumb-border: 4;
+    --thumb-angle: 135;
+    -webkit-appearance: none;
+    background: transparent;
+    width: 100%;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    cursor: pointer;
+    width: 100%;
+  }
+  input[type=range]:focus::-webkit-slider-thumb {
+    border-color: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 10) * 1%), 1);
+  }
+  input[type=range]:focus::-moz-range-thumb {
+    border-color: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 10) * 1%), 1);
+  }
+  input[type=range]:focus::-ms-thumb {
+    border-color: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 10) * 1%), 1);
+  }
+  input[type=range]::-webkit-slider-thumb {
+    --light: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%));
+    --dark: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%));
+    --default: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+    -webkit-appearance: none;
+    background: linear-gradient(calc(var(--thumb-angle) * 1deg), var(--light), var(--dark)), var(--default);
+    background-size: calc((var(--thumb-size) + var(--thumb-border)) * 1px) calc((var(--thumb-size) + var(--thumb-border)) * 1px);
+    background-position: calc(var(--thumb-border) * -1px) calc(var(--thumb-border) * -1px);
+    border-style: solid;
+    border-width: calc(var(--thumb-border) * 1px);
+    border-color: transparent;
+    border-radius: calc(var(--border-radius) * 1px);
+    cursor: pointer;
+    height: calc(var(--thumb-size) * 1px);
+    margin-top: 0px;
+    width: calc(var(--thumb-size) * 1px);
+  }
+  input[type=range]::-webkit-slider-thumb:hover {
+    border-color: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), 1);
+  }
+  input[type=range]::-webkit-slider-thumb:active {
+    border-color: #fff;
+  }
+  input[type=range]::-moz-range-thumb {
+    --light: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%));
+    --dark: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%));
+    --default: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+    background: linear-gradient(calc(var(--thumb-angle) * 1deg), var(--light), var(--dark)), var(--default);
+    background-size: calc((var(--thumb-size) + var(--thumb-border)) * 1px) calc((var(--thumb-size) + var(--thumb-border)) * 1px);
+    background-position: calc(var(--thumb-border) * -1px) calc(var(--thumb-border) * -1px);
+    border-style: solid;
+    border-width: calc(var(--thumb-border) * 1px);
+    border-color: transparent;
+    border-radius: calc(var(--border-radius) * 1px);
+    cursor: pointer;
+    height: calc(var(--thumb-size) * 1px);
+    width: calc(var(--thumb-size) * 1px);
+  }
+  input[type=range]::-moz-range-thumb:hover {
+    border-color: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), 1);
+  }
+  input[type=range]::-moz-range-thumb:active {
+    border-color: #fff;
+  }
+  input[type=range]::-ms-thumb {
+    --light: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%));
+    --dark: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%));
+    --default: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+    background: linear-gradient(calc(var(--thumb-angle) * 1deg), var(--light), var(--dark)), var(--default);
+    background-size: calc((var(--thumb-size) + var(--thumb-border)) * 1px) calc((var(--thumb-size) + var(--thumb-border)) * 1px);
+    background-position: calc(var(--thumb-border) * -1px) calc(var(--thumb-border) * -1px);
+    border-style: solid;
+    border-width: calc(var(--thumb-border) * 1px);
+    border-color: transparent;
+    border-radius: calc(var(--border-radius) * 1px);
+    cursor: pointer;
+    height: calc(var(--thumb-size) * 1px);
+    width: calc(var(--thumb-size) * 1px);
+  }
+  input[type=range]::-ms-thumb:hover {
+    border-color: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), 1);
+  }
+  input[type=range]::-ms-thumb:active {
+    border-color: #fff;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    --x: calc(var(--neumorphic-reach) * 1px);
+    --y: calc(var(--neumorphic-reach) * 1px);
+    --blur: calc(var(--neumorphic-blur) * 1px);
+    --x2: calc(var(--neumorphic-reach) * -1px);
+    --y2: calc(var(--neumorphic-reach) * -1px);
+    --default: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+    --light: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%));
+    --neumorphic-light: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%), var(--neumorphic-intensity));
+    --neumorphic-dark: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), var(--neumorphic-intensity));
+    background: var(--default);
+    border-radius: calc(var(--border-radius) * 1px);
+    border-color: var(--light);
+    border-style: solid;
+    border-width: 0;
+    box-shadow: var(--x) var(--y) var(--blur) var(--neumorphic-dark) inset,
+var(--x2) var(--y2) var(--blur) var(--neumorphic-light) inset;
+    cursor: pointer;
+    height: calc(var(--thumb-size) * 1px);
+    width: 100%;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    --track: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), var(--track-intensity));
+    background: var(--track);
+  }
+  input[type=range]::-moz-range-track {
+    --x: calc(var(--neumorphic-reach) * 1px);
+    --y: calc(var(--neumorphic-reach) * 1px);
+    --blur: calc(var(--neumorphic-blur) * 1px);
+    --x2: calc(var(--neumorphic-reach) * -1px);
+    --y2: calc(var(--neumorphic-reach) * -1px);
+    --default: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+    --light: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%));
+    --neumorphic-light: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%), var(--neumorphic-intensity));
+    --neumorphic-dark: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), var(--neumorphic-intensity));
+    background: var(--default);
+    border-radius: calc(var(--border-radius) * 1px);
+    border-color: var(--light);
+    border-style: solid;
+    border-width: 0;
+    box-shadow: var(--x) var(--y) var(--blur) var(--neumorphic-dark) inset,
+var(--x2) var(--y2) var(--blur) var(--neumorphic-light) inset;
+    cursor: pointer;
+    height: calc(var(--thumb-size) * 1px);
+    width: 100%;
+  }
+  input[type=range]::-ms-track {
+    --x: calc(var(--neumorphic-reach) * 1px);
+    --y: calc(var(--neumorphic-reach) * 1px);
+    --blur: calc(var(--neumorphic-blur) * 1px);
+    --x2: calc(var(--neumorphic-reach) * -1px);
+    --y2: calc(var(--neumorphic-reach) * -1px);
+    --default: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+    --light: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%));
+    --neumorphic-light: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%), var(--neumorphic-intensity));
+    --neumorphic-dark: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), var(--neumorphic-intensity));
+    background: var(--default);
+    border-radius: calc(var(--border-radius) * 1px);
+    border-color: var(--light);
+    border-style: solid;
+    border-width: 0;
+    box-shadow: var(--x) var(--y) var(--blur) var(--neumorphic-dark) inset,
+var(--x2) var(--y2) var(--blur) var(--neumorphic-light) inset;
+    cursor: pointer;
+    height: calc(var(--thumb-size) * 1px);
+    width: 100%;
+  }
+  button {
+    --blur: calc(var(--neumorphic-blur) * 1px);
+    --x: calc(var(--neumorphic-reach) * 1px);
+    --y: calc(var(--neumorphic-reach) * 1px);
+    --x2: calc(var(--neumorphic-reach) * -1px);
+    --y2: calc(var(--neumorphic-reach) * -1px);
+    -webkit-appearance: none;
+    background: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+    color: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 40) * 1%));
+    border: calc(var(--border-width, 0) * 1px) solid hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 15) * 1%), var(--border-intensity));
+    border-radius: calc(var(--border-radius) * 1px);
+    box-shadow: var(--x) var(--y) var(--blur) hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 15) * 1%), var(--neumorphic-intensity)),
+var(--x2) var(--y2) var(--blur) hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 15) * 1%), var(--neumorphic-intensity));
+    font-size: 1rem;
+    font-weight: 500;
+    overflow: hidden;
+    outline: transparent;
+    padding: 1rem 2rem;
+    position: relative;
+    transition: all 0.1s ease;
+  }
+  button:after {
+    bottom: 0;
+    content: '';
+    height: 15%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+  button:active {
+    box-shadow: var(--x) var(--y) var(--blur) hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 15) * 1%), var(--neumorphic-intensity)) inset,
+var(--x2) var(--y2) var(--blur) hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 15) * 1%), var(--neumorphic-intensity)) inset;
+  }
+  button:hover:after,
+  button:focus:after {
+    background: hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 40) * 1%), 0.35);
+  }
+  button:active:after {
+    background: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 40) * 1%));
+  }
+  button:nth-of-type(2):active {
+    background: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 40) * 1%));
+    box-shadow: none;
+    color: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 40) * 1%));
+  }
+  button:nth-of-type(3) {
+    background: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%));
+    color: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%));
+  }
+  button:nth-of-type(3):after {
+    display: none;
+  }
+  button:nth-of-type(3):hover,
+  button:nth-of-type(3):focus {
+    --x: calc(var(--neumorphic-reach) * 2px);
+    --y: calc(var(--neumorphic-reach) * 2px);
+    --x2: calc(var(--neumorphic-reach) * -2px);
+    --y2: calc(var(--neumorphic-reach) * -2px);
+    background: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 30) * 1%));
+  }
+  button:nth-of-type(3):active {
+    background: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 40) * 1%));
+    box-shadow: none;
+    color: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 40) * 1%));
+  }
+  [type='text'] {
+    --blur: calc(var(--neumorphic-blur) * 1px);
+    --x: calc(var(--neumorphic-reach) * 1px);
+    --y: calc(var(--neumorphic-reach) * 1px);
+    --x2: calc(var(--neumorphic-reach) * -1px);
+    --y2: calc(var(--neumorphic-reach) * -1px);
+    background: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+    border-color: transparent;
+    border-radius: calc(var(--border-radius) * 1px);
+    border-style: solid;
+    border-width: calc(var(--border-width) * 1px);
+    font-size: 1rem;
+    outline: transparent;
+    overflow: hidden;
+    padding: 1rem 2rem;
+    box-shadow: var(--x) var(--y) var(--blur) hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 15) * 1%), var(--neumorphic-intensity)) inset,
+var(--x2) var(--y2) var(--blur) hsla(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 15) * 1%), var(--neumorphic-intensity)) inset;
+  }
+  [type='text']:focus {
+    border-color: var(--highlight);
+  }
+  .buttons,
+  .texts,
+  .ranges,
+  .checkboxes,
+  .radios {
+    display: grid;
+    grid-gap: calc(var(--margin) * 4px);
+    width: 30vmin;
+  }
+  .radios,
+  .checkboxes {
+    width: auto;
+  }
+  .input {
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 1rem;
+  }
+  .texts .input:focus-within label,
+  .ranges .input:focus-within label {
+    font-weight: bold;
+  }
+  .texts .input:nth-of-type(1),
+  .ranges .input:nth-of-type(1) {
+    --highlight: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 20) * 1%));
+  }
+  .texts .input:nth-of-type(2),
+  .ranges .input:nth-of-type(2) {
+    --highlight: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%));
+  }
+  .texts .input:nth-of-type(3),
+  .ranges .input:nth-of-type(3) {
+    --highlight: transparent;
+  }
+  .texts .input:nth-of-type(3):focus-within label,
+  .ranges .input:nth-of-type(3):focus-within label {
+    color: #fff;
+  }
+  .ranges .input:nth-of-type(1) {
+    --track-intensity: 0;
+  }
+  .ranges .input:nth-of-type(2) input[type=range]::-webkit-slider-thumb:active {
+    --dark: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), 1);
+    background: var(--dark);
+  }
+  .ranges .input:nth-of-type(2) input[type=range]::-moz-range-thumb:active {
+    --dark: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), 1);
+    background: var(--dark);
+  }
+  .ranges .input:nth-of-type(2) input[type=range]::-ms-thumb:active {
+    --dark: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) - 20) * 1%), 1);
+    background: var(--dark);
+  }
+  .ranges .input:nth-of-type(3):focus-within input[type=range]::-webkit-slider-thumb {
+    --dot-alpha: 0.25;
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-webkit-slider-thumb {
+    --thumb-border: 0;
+    --dot-alpha: 0;
+    --dot-color: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 40) * 1%), var(--dot-alpha));
+    background: radial-gradient(circle at 50% 50%, var(--dot-color) 25%, transparent 25%), linear-gradient(calc(var(--thumb-angle) * 1deg), var(--light), var(--dark)), var(--default);
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-webkit-slider-thumb:focus {
+    --dot-alpha: 0.25;
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-webkit-slider-thumb:hover {
+    --dot-alpha: 0.5;
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-webkit-slider-thumb:active {
+    --dot-alpha: 1;
+    --thumb-angle: -45;
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-moz-range-thumb {
+    --thumb-border: 0;
+    --dot-alpha: 0;
+    --dot-color: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 40) * 1%), var(--dot-alpha));
+    background: radial-gradient(circle at 50% 50%, var(--dot-color) 25%, transparent 25%), linear-gradient(calc(var(--thumb-angle) * 1deg), var(--light), var(--dark)), var(--default);
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-moz-range-thumb:focus {
+    --dot-alpha: 0.25;
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-moz-range-thumb:hover {
+    --dot-alpha: 0.5;
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-moz-range-thumb:active {
+    --dot-alpha: 1;
+    --thumb-angle: -45;
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-ms-thumb {
+    --thumb-border: 0;
+    --dot-alpha: 0;
+    --dot-color: hsl(var(--hue), calc(var(--saturation) * 1%), calc((var(--lightness) + 40) * 1%), var(--dot-alpha));
+    background: radial-gradient(circle at 50% 50%, var(--dot-color) 25%, transparent 25%), linear-gradient(calc(var(--thumb-angle) * 1deg), var(--light), var(--dark)), var(--default);
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-ms-thumb:focus {
+    --dot-alpha: 0.25;
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-ms-thumb:hover {
+    --dot-alpha: 0.5;
+  }
+  .ranges .input:nth-of-type(3) input[type=range]::-ms-thumb:active {
+    --dot-alpha: 1;
+    --thumb-angle: -45;
+  }
+  .checkboxes .input input {
+    transition: all 0.1s ease;
+  }
+  .checkboxes .input input:focus + label {
+    font-weight: bold;
+  }
+  .checkboxes .input:nth-of-type(1) input {
+    box-shadow: var(--x) var(--y) var(--blur) var(--dark),
+var(--x2) var(--y2) var(--blur) var(--light);
+  }
+  .checkboxes .input:nth-of-type(1) input:hover {
+    --x: calc(var(--neumorphic-reach) * 2px);
+    --y: calc(var(--neumorphic-reach) * 2px);
+    --x2: calc(var(--neumorphic-reach) * -2px);
+    --y2: calc(var(--neumorphic-reach) * -2px);
+  }
+  .checkboxes .input:nth-of-type(1) input:focus + label {
+    font-weight: bold;
+  }
+  .checkboxes .input:nth-of-type(1) input:hover {
+    background: radial-gradient(circle at center center, hsla(0, 0%, 100%, 0.5) 25%, transparent 25%), var(--default);
+  }
+  .checkboxes .input:nth-of-type(1) input:checked {
+    background: radial-gradient(circle at center center, hsla(0, 0%, 100%, 1) 25%, transparent 25%), var(--default);
+    box-shadow: var(--x) var(--y) var(--blur) var(--dark) inset,
+var(--x2) var(--y2) var(--blur) var(--light) inset;
+  }
+  .checkboxes .input:nth-of-type(2) input:hover,
+  .checkboxes .input:nth-of-type(2) input:focus {
+    --x: calc(var(--neumorphic-reach) * 2px);
+    --y: calc(var(--neumorphic-reach) * 2px);
+    --x2: calc(var(--neumorphic-reach) * -2px);
+    --y2: calc(var(--neumorphic-reach) * -2px);
+  }
+  .checkboxes .input:nth-of-type(2) input:hover {
+    background: radial-gradient(circle at center center, hsla(0, 0%, 100%, 0.5) 25%, transparent 25%), var(--default);
+  }
+  .checkboxes .input:nth-of-type(2) input:checked {
+    --neumorphic-intensity: 1;
+    background: radial-gradient(circle at center center, hsla(0, 0%, 100%, 1) 25%, var(--dark) 25%), var(--default);
+    box-shadow: none;
+  }
+  .radios .input input {
+    transition: all 0.1s ease;
+  }
+  .radios .input input:focus + label {
+    font-weight: bold;
+  }
+  .radios .input:nth-of-type(1) input {
+    box-shadow: var(--x) var(--y) var(--blur) var(--dark),
+var(--x2) var(--y2) var(--blur) var(--light);
+  }
+  .radios .input:nth-of-type(1) input:hover {
+    --x: calc(var(--neumorphic-reach) * 2px);
+    --y: calc(var(--neumorphic-reach) * 2px);
+    --x2: calc(var(--neumorphic-reach) * -2px);
+    --y2: calc(var(--neumorphic-reach) * -2px);
+  }
+  .radios .input:nth-of-type(1) input:focus + label {
+    font-weight: bold;
+  }
+  .radios .input:nth-of-type(1) input:hover {
+    background: radial-gradient(circle at center center, hsla(0, 0%, 100%, 0.5) 25%, transparent 25%), var(--default);
+  }
+  .radios .input:nth-of-type(1) input:checked {
+    background: radial-gradient(circle at center center, hsla(0, 0%, 100%, 1) 25%, transparent 25%), var(--default);
+    box-shadow: var(--x) var(--y) var(--blur) var(--dark) inset,
+var(--x2) var(--y2) var(--blur) var(--light) inset;
+  }
+  .radios .input:nth-of-type(2) input:hover,
+  .radios .input:nth-of-type(2) input:focus {
+    --x: calc(var(--neumorphic-reach) * 2px);
+    --y: calc(var(--neumorphic-reach) * 2px);
+    --x2: calc(var(--neumorphic-reach) * -2px);
+    --y2: calc(var(--neumorphic-reach) * -2px);
+  }
+  .radios .input:nth-of-type(2) input:hover {
+    background: radial-gradient(circle at center center, hsla(0, 0%, 100%, 0.5) 25%, transparent 25%), var(--default);
+  }
+  .radios .input:nth-of-type(2) input:checked {
+    --neumorphic-intensity: 1;
+    background: radial-gradient(circle at center center, hsla(0, 0%, 100%, 1) 25%, var(--dark) 25%), var(--default);
+    box-shadow: none;
+  }
+}
