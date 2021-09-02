@@ -564,7 +564,7 @@ const HomePage = (props) => {
                     {
                       xPercent: xPosition,
                       yPercent: yPosition,
-                      duration: 1,
+                      duration: 0.5,
                       ease: "power1.out",
                       opacity: 0,
                       onComplete: () => {

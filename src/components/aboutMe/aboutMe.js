@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { createPopper } from "@popperjs/core";
 import "@lottiefiles/lottie-player";
 import "../aboutMe/about.css";
 
