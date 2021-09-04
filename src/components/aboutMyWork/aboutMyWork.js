@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import ScrollOut from "scroll-out";
 import "../aboutMyWork/aboutMyWork.css";
 
 const myExperience = {
@@ -30,30 +31,62 @@ const myExperience = {
 };
 
 export const AboutMyWork = (props) => {
+  // Set up scroll out
+  useEffect(() => {
+    ScrollOut({
+      scrollingElement: document.querySelector("main"),
+      targets: ".card-section",
+      threshold: 0.9,
+      onShown: (element) => {
+        console.log(element);
+        // setActive(`#${element.getAttribute("id")}`);
+      },
+    });
+  }, []);
   return (
-    <div id="about-my-work">
-      <h1>Cards</h1>
-      <main>
-        {Object.entries(myExperience).map(([key, arr], index) => {
-          return (
-            <div id={key} key={key}>
-              <section className="cards">
-                {arr.map((description, arr_index) => {
-                  return (
-                    <article key={key + arr_index}>
-                      <p>{description}</p>
-                    </article>
-                  );
-                })}
-              </section>
-            </div>
-          );
-        })}
-      </main>
-
-      <footer>
-        <div className="footer-pick">Cards</div>
-      </footer>
+    <div className="about-my-work-container">
+      <div id="about-my-work">
+        <h1>Cards</h1>
+        <main>
+          {Object.entries(myExperience).map(([key, arr], index) => {
+            return (
+              <div id={key} key={key} className="card-section">
+                <section className="cards">
+                  {arr.map((description, arr_index) => {
+                    return (
+                      <article key={key + arr_index}>
+                        <p>{description}</p>
+                      </article>
+                    );
+                  })}
+                  {/* <div className="card-section"></div> */}
+                </section>
+              </div>
+            );
+          })}
+        </main>
+        {/* <a>
+        Prev
+        <svg viewBox="0 0 24 24">
+          <path
+            fill="currentColor"
+            d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+          ></path>
+        </svg>
+      </a>
+      <a href="#buttons">
+        Next
+        <svg viewBox="0 0 24 24">
+          <path
+            fill="currentColor"
+            d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+          ></path>
+        </svg>
+      </a> */}
+        <footer>
+          <div className="footer-pick">Cards</div>
+        </footer>
+      </div>
     </div>
   );
 };
