@@ -226,6 +226,7 @@ const App = () => {
       targets: 'section',
       threshold: 0.9,
       onShown: element => {
+        console.log(element);
         setActive(`#${element.getAttribute('id')}`);
       } });
 
