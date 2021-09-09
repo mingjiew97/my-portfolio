@@ -65,7 +65,9 @@
 
 .cards article {
   border-radius: 25px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   flex: auto;
   padding: 20px;
   margin: 0 10% 5% 10%;
@@ -104,11 +106,16 @@ footer {
   width: 40px;
   font-size: 0;
   border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   transition: all 0.3s ease-in-out;
 }
 
 .footer-pick:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.footer-pick:active {
   box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
     -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
     inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
@@ -116,15 +123,60 @@ footer {
 }
 
 .footer-pick.active {
+  background: radial-gradient(circle at 50% 50%, grey, grey, transparent 40%);
+}
+
+.prev-button,
+.next-button {
+  cursor: pointer;
+  position: absolute;
+  background-color: #dbe0e6;
+  top: 50%;
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  font-size: 0;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  transition: all 0.2s ease-in;
+}
+
+.next-button {
+  left: 100%;
+  transform: translate(50%, -50%);
+}
+
+.prev-button {
+  right: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.prev-button:hover,
+.next-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.prev-button:active,
+.next-button:active {
   box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
     -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
     inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
     inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
-  background: radial-gradient(circle at 50% 50%, grey, grey, transparent 40%);
+}
+
+.prev-button.inactive,
+.next-button.inactive {
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.4;
+}
+
+.prev-button svg {
+  transform: rotate(180deg);
 }
 
 [data-scroll] {
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 [data-scroll="in"] {
   opacity: 1;

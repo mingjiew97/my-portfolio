@@ -31,29 +31,34 @@ const myExperience = {
 };
 
 export const AboutMyWork = (props) => {
-
   const [activePage, setActivePage] = useState(0);
   // Set up scroll out
   useEffect(() => {
-    console.log(activePage);
     let next_element = document.querySelectorAll(".card-section")[activePage];
     next_element.scrollIntoView();
     ScrollOut({
       scrollingElement: document.querySelector("main"),
-      targets:  ".card-section",
-      threshold: 0.9,
-      // onShown: (element) => {
-      //   element = next_element;
-      //   // console.log(element);
-      //   // element.classList.add("animated");
-      //   // next_element.animate([{ opacity: 0 }, { opacity: 1 }], 1000);
-      // },
-      // onHidden: function(el) {
-      //   // hide the element initially
-      //   // el.style.opacity = 0;
-      // }
+      targets: ".card-section",
+      threshold: 0.5
     });
   }, [activePage]);
+
+  const prevOrNextPage = (event, prev=true) => {
+    let prevButtonElement = document.querySelector('.prev-button');
+    let nextButtonElement = document.querySelector('.next-button');
+    let targetElement = prev ? prevButtonElement : nextButtonElement;
+    if (targetElement.classList.contains('inactive')) return;
+    let newActivePage =  prev ? activePage-1 : activePage+1;
+    if (newActivePage == 0) {
+      prevButtonElement.classList.add('inactive');
+    } else if (newActivePage == Object.keys(myExperience).length - 1) {
+      nextButtonElement.classList.add('inactive');
+    } else {
+      prevButtonElement.classList.remove('inactive');
+      nextButtonElement.classList.remove('inactive');
+    }
+    setActivePage(newActivePage);
+  };
 
   return (
     <div className="about-my-work-container">
@@ -77,27 +82,42 @@ export const AboutMyWork = (props) => {
             );
           })}
         </main>
-        {/* <a>
-        Prev
-        <svg viewBox="0 0 24 24">
-          <path
-            fill="currentColor"
-            d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-          ></path>
-        </svg>
-      </a>
-      <a href="#buttons">
-        Next
-        <svg viewBox="0 0 24 24">
-          <path
-            fill="currentColor"
-            d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-          ></path>
-        </svg>
-      </a> */}
         <footer>
-          <div className="footer-pick" onClick={(event) => {setActivePage(activePage+1);}}>Cards</div>
+          <div
+            className="footer-pick"
+            onClick={(event) => {
+              setActivePage(activePage + 1);
+            }}
+          >
+            Cards
+          </div>
         </footer>
+        <div className="card-selecter">
+          <a
+            className="prev-button inactive"
+            onClick={(event) => prevOrNextPage(event)}
+          >
+            Prev
+            <svg viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            className="next-button"
+            onClick={(event) => prevOrNextPage(event, false)}
+          >
+            Next
+            <svg viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+              ></path>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   );
