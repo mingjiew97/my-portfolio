@@ -43,15 +43,15 @@ export const AboutMyWork = (props) => {
     });
   }, [activePage]);
 
-  const prevOrNextPage = (event, prev=true) => {
+  const prevOrNextPage = (event, prev = true) => {
     let prevButtonElement = document.querySelector('.prev-button');
     let nextButtonElement = document.querySelector('.next-button');
     let targetElement = prev ? prevButtonElement : nextButtonElement;
     if (targetElement.classList.contains('inactive')) return;
-    let newActivePage =  prev ? activePage-1 : activePage+1;
-    if (newActivePage == 0) {
+    let newActivePage = prev ? activePage - 1 : activePage + 1;
+    if (newActivePage === 0) {
       prevButtonElement.classList.add('inactive');
-    } else if (newActivePage == Object.keys(myExperience).length - 1) {
+    } else if (newActivePage === Object.keys(myExperience).length - 1) {
       nextButtonElement.classList.add('inactive');
     } else {
       prevButtonElement.classList.remove('inactive');
@@ -60,15 +60,19 @@ export const AboutMyWork = (props) => {
     setActivePage(newActivePage);
   };
 
+  const footerPickClick = (event, index) => {
+    setActivePage(index);
+  };
+
   return (
     <div className="about-my-work-container">
       <div id="about-my-work">
-        <h1>Cards</h1>
         <main>
           {Object.entries(myExperience).map(([key, arr], index) => {
             return (
               <div id={key} key={key} className="card-section">
                 <section className="cards">
+                  <h1 className="work-header">{key}</h1>
                   {arr.map((description, arr_index) => {
                     return (
                       <article key={key + arr_index}>
@@ -83,40 +87,44 @@ export const AboutMyWork = (props) => {
           })}
         </main>
         <footer>
-          <div
-            className="footer-pick"
-            onClick={(event) => {
-              setActivePage(activePage + 1);
-            }}
-          >
-            Cards
-          </div>
+          {
+            Object.entries(myExperience).map(([key, arr], index) => {
+              return (
+                <div key={`footer-pick-${index}`} className={"footer-pick " + (index === activePage ? "active" : "")}
+                  onClick={(event) => footerPickClick(event, index)}>
+                  <div className="footer-pick-tooltip">
+                    {key}
+                  </div>
+                </div>
+              );
+            })
+          }
         </footer>
-        <div className="card-selecter">
-          <a
-            className="prev-button inactive"
-            onClick={(event) => prevOrNextPage(event)}
-          >
-            Prev
-            <svg viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-              ></path>
-            </svg>
-          </a>
-          <a
-            className="next-button"
-            onClick={(event) => prevOrNextPage(event, false)}
-          >
-            Next
-            <svg viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-              ></path>
-            </svg>
-          </a>
+      </div>
+      <div className="card-selecter">
+        <div
+          className="prev-button inactive"
+          onClick={(event) => prevOrNextPage(event)}
+        >
+          Prev
+          <svg viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+            ></path>
+          </svg>
+        </div>
+        <div
+          className="next-button"
+          onClick={(event) => prevOrNextPage(event, false)}
+        >
+          Next
+          <svg viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+            ></path>
+          </svg>
         </div>
       </div>
     </div>
