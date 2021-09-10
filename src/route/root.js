@@ -6,8 +6,8 @@ import { AboutMyWork } from "../components/aboutMyWork/aboutMyWork";
 function App() {
   return (
     <div>
-      {/* <PageEnterAnimation></PageEnterAnimation> */}
-      <AboutMyWork></AboutMyWork>
+      <PageEnterAnimation></PageEnterAnimation>
+      {/* <AboutMyWork></AboutMyWork> */}
     </div>
   );
 }

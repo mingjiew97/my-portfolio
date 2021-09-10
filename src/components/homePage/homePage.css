@@ -61,7 +61,7 @@
 }
 .handle[data-position="left"] path,
 .back-handle[data-position="left"] path {
-  fill: #a7dcf7;
+  fill: #e0e5ec;
 }
 .handle.out,
 .back-handle.out {

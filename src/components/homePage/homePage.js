@@ -3,6 +3,7 @@ import anime from "animejs";
 import { gsap } from "gsap";
 import "../homePage/homePage.css";
 import { AboutMe } from "../aboutMe/aboutMe";
+import { AboutMyWork } from "../aboutMyWork/aboutMyWork";
 
 // get the current window dimensions
 const getWindowDimensions = () => {
@@ -89,7 +90,7 @@ const tabColor = {
   top: "#ffcb75",
   right: "#ff7586",
   bottom: "#c8ade1",
-  left: "#a7dcf7",
+  left: "#e0e5ec",
 };
 
 const welcomeSentence = {
@@ -104,6 +105,7 @@ const welcomeSentence = {
 const HomePage = (props) => {
   let { available } = props;
   const [aboutMeCheck, setAboutMeCheck] = useState('false');
+  const [aboutMyWork, setAboutMyWork] = useState(false);
 
   // initial animation of displaying the tabs
   useEffect(() => {
@@ -506,7 +508,7 @@ const HomePage = (props) => {
             
             break;
           case "left":
-            
+            isBack ? setAboutMyWork(false) : setAboutMyWork(true);
             break;
           case "right":
             
@@ -533,6 +535,7 @@ const HomePage = (props) => {
                 ).style.backgroundColor = bgColor;
                 container.style.cssText = "";
                 container.removeChild(container.children[0]);
+
                 // determine if the current Animation is back animation or not
                 // remove / add welcome sentence
                 let welcomeSentenceElement = document.querySelector(
@@ -581,7 +584,10 @@ const HomePage = (props) => {
                   welcomeSentenceElement.style.display = "none";
                 }
                 // reset about me page 
-                if (isBack) setAboutMeCheck('false');
+                if (isBack) {
+                  setAboutMeCheck('false');
+                  setAboutMyWork(false);
+                }
                 // reset everything to default state
                 wrapper.current.style.pointerEvents = "all";
                 setTransitionAnimation(false);
@@ -722,7 +728,8 @@ const HomePage = (props) => {
         <div ref={pageTransitionRef} className="page-transition"></div>
       </div>
 
-      <AboutMe available={aboutMeCheck} />
+      {(aboutMeCheck === "true") ? <AboutMe available={aboutMeCheck} /> : null }
+      {(aboutMyWork) ? <AboutMyWork available={aboutMyWork} /> : null }
     </div>
   );
 };

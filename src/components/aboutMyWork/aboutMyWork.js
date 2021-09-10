@@ -31,6 +31,15 @@ const myExperience = {
 };
 
 export const AboutMyWork = (props) => {
+  let { available } = props;
+  let aboutMyWorkContainer = document.querySelector('.about-my-work-container');
+
+  console.log(available, aboutMyWorkContainer);
+  if (aboutMyWorkContainer) {
+    available? aboutMyWorkContainer.classList.add('show') : aboutMyWorkContainer.classList.remove('show');
+    console.log('test');
+  }
+
   const [activePage, setActivePage] = useState(0);
   // Set up scroll out
   useEffect(() => {
