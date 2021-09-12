@@ -104,8 +104,9 @@ const welcomeSentence = {
 
 const HomePage = (props) => {
   let { available } = props;
-  const [aboutMeCheck, setAboutMeCheck] = useState('false');
+  const [aboutMe, setAboutMe] = useState(false);
   const [aboutMyWork, setAboutMyWork] = useState(false);
+  const [whatShouldDisplay, setWhatShouldDisplay] = useState(null);
 
   // initial animation of displaying the tabs
   useEffect(() => {
@@ -482,6 +483,31 @@ const HomePage = (props) => {
     isBack
       ? backHandleAnimation(isBack, tabPosition)
       : handleAnimations(isBack);
+
+    switch (tabPosition) {
+      case "bottom":
+        if (isBack) {
+          setAboutMe(false);
+        } else {
+          setAboutMe(true);
+          setWhatShouldDisplay("aboutMe");
+        }
+        break;
+      case "up":
+        break;
+      case "left":
+        if (isBack) {
+          setAboutMyWork(false);
+        } else {
+          setAboutMyWork(true);
+          setWhatShouldDisplay("aboutMyWork");
+        }
+        break;
+      case "right":
+        break;
+      default:
+        break;
+    }
     // start the page Transition animation
     // full page drop down
     anime({
@@ -493,6 +519,7 @@ const HomePage = (props) => {
       bottom: tabPosition === "bottom" ? 0 : false,
       left: tabPosition === "left" ? 0 : false,
     });
+
     // full page drop down fluid effect
     anime({
       targets: newAnimationPath,
@@ -500,23 +527,6 @@ const HomePage = (props) => {
       easing: "linear",
       d: pageTransitionPathPoints.inner,
       complete: () => {
-        switch (tabPosition) {
-          case "bottom":
-            isBack ? setAboutMeCheck('leave') : setAboutMeCheck('true');
-            break;
-          case "up":
-            
-            break;
-          case "left":
-            isBack ? setAboutMyWork(false) : setAboutMyWork(true);
-            break;
-          case "right":
-            
-            break;
-
-          default:
-            break;
-        }
         anime({
           targets: newAnimationPath,
           duration: 300,
@@ -542,6 +552,9 @@ const HomePage = (props) => {
                   ".welcome-sentence"
                 );
                 if (isBack) {
+                  // remove the middle component; set to the initial state
+                  setWhatShouldDisplay(null);
+                  // start change the welcome sentence
                   welcomeSentenceElement.innerHTML = welcomeSentence.default;
                   let centerTextFirstComeAnimationTimeLine = new gsap.timeline();
                   centerTextAnimation = true;
@@ -567,7 +580,7 @@ const HomePage = (props) => {
                     {
                       xPercent: xPosition,
                       yPercent: yPosition,
-                      duration: 0.5,
+                      duration: 0.3,
                       ease: "power1.out",
                       opacity: 0,
                       onComplete: () => {
@@ -575,18 +588,12 @@ const HomePage = (props) => {
                         handleAnimations(isBack);
                         centerTextAnimation = false;
                       },
-                    },
-                    0.2
+                    }
                   );
                   welcomeSentenceElement.style.display = "block";
                 } else {
                   backHandleAnimation(isBack, tabPosition);
                   welcomeSentenceElement.style.display = "none";
-                }
-                // reset about me page 
-                if (isBack) {
-                  setAboutMeCheck('false');
-                  setAboutMyWork(false);
                 }
                 // reset everything to default state
                 wrapper.current.style.pointerEvents = "all";
@@ -640,6 +647,17 @@ const HomePage = (props) => {
         centerTextAnimation = false;
       },
     });
+  };
+
+  const switchMiddleDisplayComponent = () => {
+    switch (whatShouldDisplay) {
+      case "aboutMe":
+        return <AboutMe available={aboutMe} />;
+      case "aboutMyWork":
+        return <AboutMyWork available={aboutMyWork} />;
+      default:
+        return null;
+    }
   };
 
   return !available ? null : (
@@ -728,8 +746,7 @@ const HomePage = (props) => {
         <div ref={pageTransitionRef} className="page-transition"></div>
       </div>
 
-      {(aboutMeCheck === "true") ? <AboutMe available={aboutMeCheck} /> : null }
-      {(aboutMyWork) ? <AboutMyWork available={aboutMyWork} /> : null }
+      {switchMiddleDisplayComponent()}
     </div>
   );
 };

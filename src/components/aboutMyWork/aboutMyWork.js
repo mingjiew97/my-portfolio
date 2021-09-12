@@ -32,12 +32,14 @@ const myExperience = {
 
 export const AboutMyWork = (props) => {
   let { available } = props;
-  let aboutMyWorkContainer = document.querySelector('.about-my-work-container');
+  let aboutMyWorkElement = document.querySelector(".about-my-work-container");
 
-  console.log(available, aboutMyWorkContainer);
-  if (aboutMyWorkContainer) {
-    available? aboutMyWorkContainer.classList.add('show') : aboutMyWorkContainer.classList.remove('show');
-    console.log('test');
+  if (available && aboutMyWorkElement) {
+    aboutMyWorkElement.classList.add("active");
+  } else if (!available && aboutMyWorkElement) {
+    aboutMyWorkElement.classList.remove("active");
+    aboutMyWorkElement.classList.add("non-active");
+    setTimeout(() => aboutMyWorkElement.classList.remove("non-active"), 1000);
   }
 
   const [activePage, setActivePage] = useState(0);
@@ -48,23 +50,25 @@ export const AboutMyWork = (props) => {
     ScrollOut({
       scrollingElement: document.querySelector("main"),
       targets: ".card-section",
-      threshold: 0.5
+      threshold: 0.5,
     });
   }, [activePage]);
 
   const prevOrNextPage = (event, prev = true) => {
-    let prevButtonElement = document.querySelector('.prev-button');
-    let nextButtonElement = document.querySelector('.next-button');
+    console.log("test");
+
+    let prevButtonElement = document.querySelector(".prev-button");
+    let nextButtonElement = document.querySelector(".next-button");
     let targetElement = prev ? prevButtonElement : nextButtonElement;
-    if (targetElement.classList.contains('inactive')) return;
+    if (targetElement.classList.contains("inactive")) return;
     let newActivePage = prev ? activePage - 1 : activePage + 1;
     if (newActivePage === 0) {
-      prevButtonElement.classList.add('inactive');
+      prevButtonElement.classList.add("inactive");
     } else if (newActivePage === Object.keys(myExperience).length - 1) {
-      nextButtonElement.classList.add('inactive');
+      nextButtonElement.classList.add("inactive");
     } else {
-      prevButtonElement.classList.remove('inactive');
-      nextButtonElement.classList.remove('inactive');
+      prevButtonElement.classList.remove("inactive");
+      nextButtonElement.classList.remove("inactive");
     }
     setActivePage(newActivePage);
   };
@@ -96,45 +100,44 @@ export const AboutMyWork = (props) => {
           })}
         </main>
         <footer>
-          {
-            Object.entries(myExperience).map(([key, arr], index) => {
-              return (
-                <div key={`footer-pick-${index}`} className={"footer-pick " + (index === activePage ? "active" : "")}
-                  onClick={(event) => footerPickClick(event, index)}>
-                  <div className="footer-pick-tooltip">
-                    {key}
-                  </div>
-                </div>
-              );
-            })
-          }
+          <div
+            className="prev-button inactive"
+            onClick={(event) => prevOrNextPage(event)}
+          >
+            Prev
+            <svg viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+              ></path>
+            </svg>
+          </div>
+          {Object.entries(myExperience).map(([key, arr], index) => {
+            return (
+              <div
+                key={`footer-pick-${index}`}
+                className={
+                  "footer-pick " + (index === activePage ? "active" : "")
+                }
+                onClick={(event) => footerPickClick(event, index)}
+              >
+                <div className="footer-pick-tooltip">{key}</div>
+              </div>
+            );
+          })}
+          <div
+            className="next-button"
+            onClick={(event) => prevOrNextPage(event, false)}
+          >
+            Next
+            <svg viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+              ></path>
+            </svg>
+          </div>
         </footer>
-      </div>
-      <div className="card-selecter">
-        <div
-          className="prev-button inactive"
-          onClick={(event) => prevOrNextPage(event)}
-        >
-          Prev
-          <svg viewBox="0 0 24 24">
-            <path
-              fill="currentColor"
-              d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-            ></path>
-          </svg>
-        </div>
-        <div
-          className="next-button"
-          onClick={(event) => prevOrNextPage(event, false)}
-        >
-          Next
-          <svg viewBox="0 0 24 24">
-            <path
-              fill="currentColor"
-              d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-            ></path>
-          </svg>
-        </div>
       </div>
     </div>
   );

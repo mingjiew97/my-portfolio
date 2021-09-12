@@ -12,20 +12,20 @@
   display: flex;
   visibility: hidden;
   opacity: 0;
-  transform: translateY(500px);
-  transition: all 0.5s ease-in;
+  transform: translateY(100%);
+  transition: all 0.7s ease-in;
 }
 
 .about-page.active {
   visibility: visible;
   opacity: 1;
-  transform: translateY(0px);
+  transform: translateY(0);
 }
 
 .about-page.non-active {
   visibility: hidden;
   opacity: 0;
-  transform: translateY(-500px);
+  transform: translateY(-100%);
 }
 
 .main-section {

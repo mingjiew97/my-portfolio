@@ -5,15 +5,12 @@ import "../aboutMe/about.css";
 export const AboutMe = (props) => {
   let { available } = props;
   let aboutPageElement = document.querySelector(".about-page");
-  if (available === "true" && aboutPageElement) {
-    aboutPageElement.classList.remove("non-active");
+  if (available && aboutPageElement) {
     aboutPageElement.classList.add("active");
-  } else if (available === "leave" && aboutPageElement) {
+  } else if (!available && aboutPageElement) {
     aboutPageElement.classList.remove("active");
     aboutPageElement.classList.add("non-active");
-    setTimeout(() => {
-      aboutPageElement.classList.remove("non-active");
-    }, 500);
+    setTimeout(() => aboutPageElement.classList.remove("non-active"), 1000);
   }
 
   const showWechatQRCode = () => {

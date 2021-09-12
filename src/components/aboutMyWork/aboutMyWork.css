@@ -9,11 +9,20 @@
   justify-content: center;
   visibility: hidden;
   opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.7s ease-in;
 }
 
-.about-my-work-container.show {
+.about-my-work-container.active {
   visibility: visible;
   opacity: 1;
+  transform: translateX(0);
+}
+
+.about-my-work-container.non-active {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(100%);
 }
 
 #about-my-work {
@@ -157,9 +166,9 @@ footer {
   cursor: pointer;
   position: absolute;
   background-color: #dbe0e6;
-  top: 50%;
-  height: max(3vw, 30px);
-  width: max(3vw, 30px);
+  bottom: 5%;
+  height: min(5vh, 30px);
+  width: min(5vh, 30px);
   border-radius: 50%;
   font-size: 0;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
