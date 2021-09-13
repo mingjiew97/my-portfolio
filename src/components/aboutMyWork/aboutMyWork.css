@@ -10,7 +10,7 @@
   visibility: hidden;
   opacity: 0;
   transform: translateX(-100%);
-  transition: all 0.7s ease-in;
+  transition: all 0.8s ease-in;
 }
 
 .about-my-work-container.active {
