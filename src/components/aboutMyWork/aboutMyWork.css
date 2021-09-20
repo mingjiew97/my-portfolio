@@ -31,12 +31,13 @@
 }
 
 .work-header {
-  text-align: center;
-  padding: max(1vh, 15px);
+  font-family: "Roboto", sans-serif;
   font-size: 5vh;
-  margin: 5%;
-  border-radius: 25px;
-  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+  border-bottom: 1px solid #111;
+  text-align: center;
+  margin-top: 5%;
+  position: relative;
+  font-weight: bold;
 }
 
 #about-my-work main {
@@ -85,7 +86,7 @@
   position: absolute;
 }
 
-.cards article {
+.cards-article {
   border-radius: 25px;
   /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
@@ -95,15 +96,15 @@
   transition: all 0.2s ease-in;
 }
 
-.cards article:first-child {
-  margin-top: 10%;
+.cards-article:first-child {
+  margin-top: 5%;
 }
 
-.cards article:last-child {
+.cards-article:last-child {
   margin-bottom: 10%;
 }
 
-.cards article:hover {
+.cards-article:hover {
   box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.2), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5), inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
 }
 

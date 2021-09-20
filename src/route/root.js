@@ -6,8 +6,8 @@ import { MyBlog } from "../components/myBlog/myBlog";
 function App() {
   return (
     <div>
-      {/* <PageEnterAnimation></PageEnterAnimation> */}
-      <MyBlog></MyBlog>
+      <PageEnterAnimation></PageEnterAnimation>
+      {/* <MyBlog></MyBlog> */}
     </div>
   );
 }

@@ -86,14 +86,15 @@ export const AboutMyWork = (props) => {
               <div id={key} key={key} className="card-section">
                 <section className="cards">
                   <h1 className="work-header">{key}</h1>
-                  {arr.map((description, arr_index) => {
-                    return (
-                      <article key={key + arr_index}>
-                        <p>{description}</p>
-                      </article>
-                    );
-                  })}
-                  {/* <div className="card-section"></div> */}
+                  <div className="cards-article-section">
+                    {arr.map((description, arr_index) => {
+                      return (
+                        <article className="cards-article" key={key + arr_index}>
+                          <p>{description}</p>
+                        </article>
+                      );
+                    })}
+                  </div>
                 </section>
               </div>
             );
